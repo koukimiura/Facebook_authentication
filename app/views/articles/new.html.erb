@@ -1,0 +1,6 @@
+<div class="form">
+    <%= form_for @article do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+    <%= render 'form', {:f => f} %>
+    <% end %>
+</div>

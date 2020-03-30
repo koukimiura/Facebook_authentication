@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Myapp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>〜ぶらり海外旅行情報〜</h1>
+      </header>
+      
+      <nav>
+        <ul class="list">
+          <% if user_signed_in? %>
+              <li class="list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+              <li class="list-item"><%= link_to "記事を作成", new_article_path %></li>
+            <% else %>
+              <li class="list-item"><%= link_to "新規登録", new_user_registration_path %></li>
+              <li class="list-item"><%= link_to "ログイン", new_user_session_path %></li>
+              <li><%= link_to "facebookでログイン", user_facebook_omniauth_authorize_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+      
+      <div class="container">
+        <% if flash[:notice] %>
+          <div class="flash" >
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+        <main>
+          <%= yield %>
+        </main>
+        <footer>
+          <%= link_to "戻る", :back %>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

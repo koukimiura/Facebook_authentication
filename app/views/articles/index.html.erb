@@ -1,0 +1,17 @@
+<div class="articles">
+    <% @articles.each do |article| %>
+        <div class="article">
+            <div class="title">
+                <%= article.title %>
+            </div>
+            <div class="content">
+                <%= article.content %>
+            </div>
+            <div class="user-edit-destroy">
+                <%= link_to "作成者名前", user_path(id: params[:user_id]) %>
+                <%= link_to "編集", edit_article_path(id: params[:id]) %>
+                <%= link_to "記事の削除", new_article_path(id: params[:id])%>
+            </div>
+        </div>
+    <% end %>
+</div>
