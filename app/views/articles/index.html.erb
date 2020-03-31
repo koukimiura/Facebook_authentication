@@ -8,9 +8,9 @@
                 <%= article.content %>
             </div>
             <div class="user-edit-destroy">
-                <%= link_to "作成者名前", user_path(id: params[:user_id]) %>
-                <%= link_to "編集", edit_article_path(id: params[:id]) %>
-                <%= link_to "記事の削除", new_article_path(id: params[:id])%>
+                <%= link_to "作成者名前", user_path(article.user_id) %>
+                <%= link_to "編集", edit_article_path(article) %>
+                <%= link_to "記事の削除", article_path(article), method: :delete %>
             </div>
         </div>
     <% end %>

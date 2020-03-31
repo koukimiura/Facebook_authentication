@@ -263,7 +263,7 @@ Devise.setup do |config|
 
   #fasebook
   
-  config.omniauth :facebook, ENV['FACEBOOK_KEY'],ENV['FACEBOOK_SECRET'],
+  config.omniauth :facebook, ENV['FACEBOOK_ID'],ENV['FACEBOOK_SECRET_KEY']
   # scope: 'email', display: 'popup', local: 'ja_JP', info_fields: 'name, email, gender'
   
   

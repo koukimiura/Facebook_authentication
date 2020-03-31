@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
     before_action :check, only: [:edit, :update, :destroy]
-    before_action :authnecate_user!, except: [:index]
+    before_action :authenticate_user!, except: [:index]
     
     
     def index
@@ -12,9 +12,9 @@ class ArticlesController < ApplicationController
     end
     
     def create
-        @article = Articel.new(article_params)
+        @article = Article.new(article_params)
         
-        if @article.save?
+        if @article.save
             flash[:notice] = "記事を作成しました。"
             redirect_to root_path
         else
@@ -30,7 +30,9 @@ class ArticlesController < ApplicationController
     end
     
     def update
-        
+        @article.update(article_params)
+        flash[:notice] = "記事を作成しました。"
+        redirect_to root_path
     end
     
     
@@ -52,7 +54,7 @@ class ArticlesController < ApplicationController
     
     def article_params
         
-        params.require(:article).permit(:title, :content)
+        params.require(:article).permit(:title, :content, :user_id).merge(:user_id => current_user.id)
         
     end
     

@@ -19,7 +19,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     
     #FacebookからOmniAuthで取得したすべての情報はrequest.env["omniauth.auth"]のハッシュでアクセス
     @user = User.find_for_oauth(request.env['omniauth.auth'])
-    logger.debug("--------------fasebookリクエスト=#{request.env['omniauth.auth']}")
     
     if @user.persisted? #@userがDBに存在するなら、またはcreate（新規登録ができたか)
     
@@ -50,9 +49,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # end
 
   # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
+   def failure
+     super
+   end
 
   # protected
 
