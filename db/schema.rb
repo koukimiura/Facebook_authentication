@@ -10,26 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200331130851) do
+ActiveRecord::Schema.define(version: 2020_03_31_130851) do
 
   create_table "articles", force: :cascade do |t|
-    t.string   "title"
-    t.string   "content"
+    t.string "title"
+    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "gender"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "uid"
-    t.string   "provider"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string "name"
+    t.integer "gender"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "uid"
+    t.string "provider"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_users_on_email", unique: true
